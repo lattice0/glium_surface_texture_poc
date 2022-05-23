@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), TextureView.SurfaceTextureListener {
 
     companion object {
         private val LOG_TAG = MainActivity::class::simpleName.toString()
-        external fun registerSurfaceTextureNativeHandler(surfaceTexture: SurfaceTexture): Boolean
+        external fun registerSurfaceTextureNativeHandler(surfaceTexture: SurfaceTexture, width: Int, height: Int): Boolean
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), TextureView.SurfaceTextureListener {
         surfaceTexture = surface
         this.width = width
         this.height = height
-        registerSurfaceTextureNativeHandler(surfaceTexture)
+        registerSurfaceTextureNativeHandler(surfaceTexture, width, height)
     }
 
     override fun onSurfaceTextureSizeChanged(surface: SurfaceTexture, width: Int, height: Int) {
