@@ -8,7 +8,6 @@ import android.view.TextureView
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.properties.Delegates
 
-
 class MainActivity : AppCompatActivity(), TextureView.SurfaceTextureListener {
     private var glSurfaceView: GLSurfaceView? = null
     private lateinit var surfaceTexture: SurfaceTexture

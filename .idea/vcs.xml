@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/app/src/main/rust/surface_texture_glium" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/app/src/main/rust/surface_texture_glium/src/android-ndk-rs" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/app/src/main/rust/surface_texture_glium/src/glium" vcs="Git" />
   </component>
 </project>
