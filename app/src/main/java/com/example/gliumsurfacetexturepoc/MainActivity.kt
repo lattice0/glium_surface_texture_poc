@@ -4,12 +4,13 @@ import android.graphics.SurfaceTexture
 import android.opengl.GLSurfaceView
 import android.os.Bundle
 import android.util.Log
+import android.view.SurfaceView
 import android.view.TextureView
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity(), TextureView.SurfaceTextureListener {
-    private var glSurfaceView: GLSurfaceView? = null
+    private var glSurfaceView: SurfaceView? = null
     private lateinit var surfaceTexture: SurfaceTexture
     private var width by Delegates.notNull<Int>()
     private var height by Delegates.notNull<Int>()
