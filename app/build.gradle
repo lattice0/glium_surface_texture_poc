@@ -37,7 +37,7 @@ apply plugin: 'org.mozilla.rust-android-gradle.rust-android'
 
 cargo {
     module  = "src/main/rust/surface_texture_glium"
-    libname = "surface_texture_glium"
+    libname = "surface_texture_glium_c"
     targets = ["arm64", "x86_64"]
     apiLevel = 28
 }
