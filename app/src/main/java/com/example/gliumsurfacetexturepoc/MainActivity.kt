@@ -14,6 +14,9 @@ class MainActivity : AppCompatActivity(), TextureView.SurfaceTextureListener {
     private var height by Delegates.notNull<Int>()
 
     companion object {
+        init {
+            System.loadLibrary("surface_texture_glium_c")
+        }
         private val LOG_TAG = MainActivity::class::simpleName.toString()
         external fun registerSurfaceTextureNativeHandler(surfaceTexture: SurfaceTexture, width: Int, height: Int): Boolean
     }
