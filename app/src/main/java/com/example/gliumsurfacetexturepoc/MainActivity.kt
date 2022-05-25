@@ -1,16 +1,14 @@
 package com.example.gliumsurfacetexturepoc
 
 import android.graphics.SurfaceTexture
-import android.opengl.GLSurfaceView
 import android.os.Bundle
 import android.util.Log
-import android.view.SurfaceView
 import android.view.TextureView
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity(), TextureView.SurfaceTextureListener {
-    private var glSurfaceView: SurfaceView? = null
+    private var textureView: TextureView? = null
     private lateinit var surfaceTexture: SurfaceTexture
     private var width by Delegates.notNull<Int>()
     private var height by Delegates.notNull<Int>()
@@ -23,13 +21,15 @@ class MainActivity : AppCompatActivity(), TextureView.SurfaceTextureListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        glSurfaceView = findViewById( R.id.surfaceView )
+        textureView = findViewById( R.id.textureView )
+        textureView!!.setSurfaceTextureListener(this);
     }
 
     override fun onSurfaceTextureAvailable(surface: SurfaceTexture, width: Int, height: Int) {
         surfaceTexture = surface
         this.width = width
         this.height = height
+        Log.d(LOG_TAG, "onSurfaceTextureAvailable: width: $width, height: $height")
         registerSurfaceTextureNativeHandler(surfaceTexture, width, height)
     }
 
