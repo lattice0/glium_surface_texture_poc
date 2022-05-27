@@ -1,0 +1,6 @@
+[submodule "app/src/main/rust/surface_texture_glium/src/android-ndk-rs"]
+	path = app/src/main/rust/surface_texture_glium/src/android-ndk-rs
+	url = https://github.com/lattice0/android-ndk-rs
+[submodule "app/src/main/rust/surface_texture_glium/src/glium"]
+	path = app/src/main/rust/surface_texture_glium/src/glium
+	url = https://github.com/lattice0/glium
