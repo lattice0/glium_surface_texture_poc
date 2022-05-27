@@ -1,0 +1,6 @@
+[submodule "src/glium"]
+	path = src/glium
+	url = https://github.com/lattice0/glium
+[submodule "src/android-ndk-rs"]
+	path = src/android-ndk-rs
+	url = https://github.com/lattice0/android-ndk-rs

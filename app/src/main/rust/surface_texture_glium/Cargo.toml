@@ -1,0 +1,17 @@
+[package]
+name = "surface_texture_glium"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "surface_texture_glium_c"
+crate-type = ["cdylib"]
+
+[dependencies]
+glium = {path="./src/glium", default-features=false, features=["android_surface_texture"]}
+libc = {version="0.2"}
+jni = {version="0.19.0"}
+lazy_static = "1.4.0"
+ndk = {path = "./src/android-ndk-rs/ndk", features=["api-level-28", "trace"]}
+ndk-glue = {path = "./src/android-ndk-rs/ndk-glue", features=["logger"]}
+log = "0.4.17"

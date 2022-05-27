@@ -1,0 +1,36 @@
+name: Publish
+
+on:
+  push:
+    branches: [master]
+    paths: "**/Cargo.toml"
+
+jobs:
+  Publish:
+    if: github.repository_owner == 'rust-windowing'
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1 # ensure crate order
+      fail-fast: false
+      matrix:
+        crate:
+          - { name: "ndk-sys", target: "armv7-linux-androideabi" }
+          - { name: "ndk", target: "armv7-linux-androideabi" }
+          - { name: "ndk-macro", target: "x86_64-unknown-linux-gnu" }
+          - { name: "ndk-context", target: "armv7-linux-androideabi" }
+          - { name: "ndk-glue", target: "armv7-linux-androideabi" }
+          - { name: "ndk-build", target: "x86_64-unknown-linux-gnu" }
+          - { name: "cargo-apk", target: "x86_64-unknown-linux-gnu" }
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: ${{ matrix.crate.target }}
+          override: true
+      - name: Publish ${{ matrix.crate.name }}
+        uses: actions-rs/cargo@v1
+        continue-on-error: true
+        with:
+          command: publish
+          args: --manifest-path ${{ matrix.crate.name }}/Cargo.toml --target ${{ matrix.crate.target }} --token ${{ secrets.cratesio_token }}
