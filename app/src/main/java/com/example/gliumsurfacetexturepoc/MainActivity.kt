@@ -3,6 +3,7 @@ package com.example.gliumsurfacetexturepoc
 import android.graphics.SurfaceTexture
 import android.os.Bundle
 import android.util.Log
+import android.view.Surface
 import android.view.TextureView
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.properties.Delegates
@@ -18,7 +19,9 @@ class MainActivity : AppCompatActivity(), TextureView.SurfaceTextureListener {
             System.loadLibrary("surface_texture_glium_c")
         }
         private val LOG_TAG = MainActivity::class::simpleName.toString()
-        external fun registerSurfaceTextureNativeHandler(surfaceTexture: SurfaceTexture, width: Int, height: Int): Boolean
+        //external fun registerSurfaceTextureNativeHandler(surfaceTexture: SurfaceTexture, width: Int, height: Int): Boolean
+        external fun initializeEGL(surface: Surface, surfaceTexture: SurfaceTexture, width: Int, height: Int): Boolean
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +36,9 @@ class MainActivity : AppCompatActivity(), TextureView.SurfaceTextureListener {
         this.width = width
         this.height = height
         Log.d(LOG_TAG, "onSurfaceTextureAvailable: width: $width, height: $height")
-        registerSurfaceTextureNativeHandler(surfaceTexture, width, height)
+        val surface = Surface(surfaceTexture)
+        initializeEGL(surface, surfaceTexture, width, height)
+        //registerSurfaceTextureNativeHandler(surfaceTexture, width, height)
     }
 
     override fun onSurfaceTextureSizeChanged(surface: SurfaceTexture, width: Int, height: Int) {
